@@ -4,6 +4,10 @@
 	max-width: 1200px;
 }
 
+select {
+	color: black;
+}
+
 /* Typography */
 a,
 input[type="submit"],

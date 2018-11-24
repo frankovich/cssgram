@@ -29,14 +29,23 @@
 		</h1>
 		<h2>Update CSS Variables with <span class='hl'>JS</span></h2>
 
-		<input type="file" name="upload" id="upload_hidden"/>
+		<input type="file" name="upload" id="upload_hidden" />
 
 		<div class="controls">
 			<label for="spacing">Border:</label>
 			<input id="spacing" class="range" type="range" name="spacing" min="0" max="50" value="10" data-suffix="px">
 
-			<label for=" base">Base Color</label>
+			<label for="base">Base Color</label>
 			<input id="base" type="color" name="base" value="#ffc600">
+
+			<label for="filters">Filters</label>
+			<select name="filters" id="filters">
+				<option value="normal">Normal</option>
+				<option value="1977">1977</option>
+				<option value="amaro">Amaro</option>
+				<option value="lofi">Lo-Fi</option>
+				<option value="xpro">X-Pro II</option>
+			</select>
 		</div>
 
 		<div class="ba-row">

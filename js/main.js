@@ -2,7 +2,50 @@
 (function () {
     'use strict';
 
+    const filters = {
+        1977: {
+            sepia: '50%',
+            hue: '-30deg',
+            saturate: '140%'
+        },
+        amaro: {
+            contrast: '110%',
+            brightness: '120%',
+            saturate: '130%',
+            sepia: '35%'
+        },
+        lofi: {
+            contrast: '140%',
+            sepia: '35%'
+        },
+        xpro: {
+            contrast: '125%',
+            sepia: '45%',
+            hue: '-5deg',
+            brightness: '175%',
+            saturate: '130%'
+        }
+    }
+
+    document.querySelector('#filters').addEventListener('change', makeFilters);
     const inputs = document.querySelectorAll('.ba-filters input, #base, #spacing');
+
+    function makeFilters() {
+        let choosedFilter = this.value;
+        clearAll();
+
+        if (choosedFilter !== 'normal') {
+            let filter = filters[choosedFilter];
+            for (const key in filter) {
+                setCssVar(key, filter[key]);
+                if (document.querySelector('[for="' + key + '"]+.ba-filter__value')) {
+                    document.querySelector('[for=' + key + ']+.ba-filter__value').textContent = filter[key];
+                }
+                document.querySelector('input#' + key).value = parseInt(filter[key]);
+            }
+        }
+
+    }
 
     // Add for each input listener for change range or value
     inputs.forEach(function (element) {
@@ -47,10 +90,9 @@
             setCssVar(varName, varVal);
 
             if (document.querySelector('[for="' + element.name + '"]+.ba-filter__value')) {
-                document.querySelector('[for=' + element.name + ']+.ba-filter__value').textContent = element.value + element.dataset.suffix || "";;
+                document.querySelector('[for=' + element.name + ']+.ba-filter__value').textContent = element.value + element.dataset.suffix || "";
             }
         });
-
     }
 
     // open new photo
